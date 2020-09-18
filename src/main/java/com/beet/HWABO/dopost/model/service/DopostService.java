@@ -8,11 +8,10 @@ import com.beet.HWABO.member.model.vo.Member;
 
 public interface DopostService {
 	
-	int insertdopost(Dopost dopost);
-	 int deletedopost(Dopost dopost);
-	 int updatedopost( Dopost dopost);
+	int insertDopost(Dopost dopost);
+	 int deleteDopost(String dno);
+	 int updateDopost( Dopost dopost);
 	 ArrayList<Dopost> selectList();
-	Dopost selectonedopost(String dno);
-	Member selectMember(String uemail);
-	
+	Dopost selectDopost(String dno);
+
 }

@@ -30,7 +30,7 @@
     <button onclick="javascript:location.href='abc.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">다운다운 페이지로</button>
     <button onclick="javascript:location.href='suugit.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">suugit의 페이지로</button>
     <button onclick="javascript:location.href='cards.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">RED의 페이지로</button>
-    <button onclick="javascript:location.href='khc.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">KHC 페이지로</button>
+    <button onclick="javascript:location.href='dopostlist.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">DOPOST목록보기</button>
     <button onclick="javascript:location.href='plz.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">plzCarryMe</button>
     <button onclick="javascript:location.href='bpostlist.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">KyuKyu 페이지로</button>
     <button onclick="javascript:location.href='moveCrypto.do'" style="width:150px;height:60px;background-color:#2E2E2E;color:white;">test로그인 페이지로</button>

@@ -20,9 +20,7 @@
 		
 		<!-- 희철 -->
 		<typeAlias type="com.beet.HWABO.dopost.model.vo.Dopost" alias="Dopost"/>
-		<typeAlias type="com.beet.HWABO.cproject.model.vo.Cproject" alias="Cproject"/>
-		<typeAlias type="com.beet.HWABO.pmanage.model.vo.Pmanage" alias="Pmanage"/>
-		<typeAlias type="com.beet.HWABO.projectp.model.vo.Projectp" alias="Projectp"/>
+		
 		
 		<!-- 규림 -->
 		<typeAlias type="com.beet.HWABO.note.model.vo.Note" alias="Note"/>
@@ -57,9 +55,7 @@
 		<mapper resource="redMappers/red-mapper.xml" />
 		<!-- 희철 -->
 		<mapper resource="khcMappers/dopost-mapper.xml" />
-		<mapper resource="khcMappers/cproject-mapper.xml" />
-		<mapper resource="khcMappers/pmanage-mapper.xml" />
-		<mapper resource="khcMappers/projectp-mapper.xml" />
+		
 		<!-- 규림 -->
 		<mapper resource="kyuMappers/note-mapper.xml" />
 		<mapper resource="kyuMappers/cabinet-mapper.xml" />

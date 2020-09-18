@@ -1,5 +1,8 @@
 package com.beet.HWABO.dopost.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.beet.HWABO.dopost.model.vo.Dopost;
-import com.beet.HWABO.member.model.vo.Member;
 
 
 @Repository("dopostDao")
@@ -21,23 +23,31 @@ public class DopostDao {
 
 	}
 
-	public int insertdopost(Dopost dopost) {
+	public int insertDopost(Dopost dopost) {
 		logger.info("dopostDao run.....");
-		return session.insert("dopostMapper.insertdopost", dopost);
+		return session.insert("dopostMapper.insertDopost", dopost);
 	}
 
-	public int deletedopost(Dopost dopost) {
-		return session.delete("dopostMapper.deletedopost", dopost);
+	public int deleteDopost(String dno) {
+		return session.delete("dopostMapper.deleteDopost", dno);
 	}
 
-	public int updateOrigindopost(Dopost dopost) {
-		return session.update("dopostMapper.updateOrigindopost", dopost);
-	}
-
-	
-	public Dopost selectdopost(String dno) {
-		return session.selectOne("dopostMapper.selectone", dno);
+	public int updateDopost(Dopost dopost) {
+		return session.update("dopostMapper.updateDopost", dopost);
 	}
 
 	
+	public Dopost selectDopost(String dno) {
+		logger.info("selectdopost run...");
+		return session.selectOne("dopostMapper.selectDopost", dno);
+	}
+
+	public ArrayList<Dopost> selectList() {
+		List<Dopost> list = session.selectList("dopostMapper.selectList");
+		return (ArrayList<Dopost>)list;
+	}
+
+	
+
+
 }

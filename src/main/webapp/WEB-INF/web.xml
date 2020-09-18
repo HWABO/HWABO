@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
 	<!-- 홈페이지 등록했을때 index.jsp가 구동되게는 함 -->
-<!-- 	<welcome-file-list>
+ 	<!-- <welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list> -->
+	</welcome-file-list>  -->
 	
 	<session-config>
 		<session-timeout>60</session-timeout>

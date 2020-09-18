@@ -1,7 +1,11 @@
 <%-- <%@ page session="false" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,11 @@
 <meta name="author" content="">
 
 <title>HWABO</title>
+<script type="text/javascript">
+function showWriteForm(){
+	location.href = "dopostInsertForm.do";
+}
+</script>
 
 <!-- Custom fonts for this template -->
 <link
@@ -365,104 +374,47 @@
 					<div class="card shadow mb-4">
 						<script type="text/javascript"
 							src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-						<script type="text/javascript">
-							$(function() {
-								$('#contentText').keyup(
-										function(e) {
-											var content = $(this).val();
-											$('#counter').val(
-													200 - content.length);
+					
 
-											if (content.length > 200) {
-												$(this).val(
-														$(this).val()
-																.substring(0,
-																		200));
-											}
-										});
-							});
-						</script>
+
 
 						<div class="card-body"> <!-- 정의 -->
-							<!-- 게시글안쪽 -->
-							<form action="mytodo.do" id="dopost"  method="post">
+							<!-- 게시글목록 -->
+						
 							
 								<table style="text-align: center; width: 100%;">
 									<tr class="m-0 font-weight-bold text-primary">   <!-- tr:큰속성,  td:각각 속성 -->
-										<td style="width: 20%;"><span>글작성</span></td>
-										<td style="width: 20%;"><span>업무</span></td>
-										<td style="width: 20%;"><span>일정</span></td>
-										<td style="width: 20%;"><span>할일</span></td>
-										<td style="width: 20%;"><span>투표</span></td>
+										<td><span>글번호</span></td>
+										<td><span>제목</span></td>
+										<td><span>사용자번호</span></td>
+										<td><span>글쓴이</span></td>
+										<td><span>할일</span></td>
+										<td><span>작성날짜</span></td>
+										<td><span>공개여부</span></td>
+										<td><span>프로젝트번호</span></td>
 									</tr>
-									<tr>
-										<td colspan="5">
-											<hr>
-										</td>
-									</tr>
-									<tr>
-									
-									
-									<td>
-								<!-- 	<input type="hidden" name="ducode" value="h128">
-				
-									<input type="hidden" name="dwriter" value="김서장"> -->
-									<input type="hidden" name="ducode" value="${sessionScope.ucode }">
-								 	<input type="hidden" name="dwriter" value="${sessionScope.uname}">
-									<!-- <input type="text" name="dwriter" value="글쓴이"> -->
-									</td>
-									</tr>
-									
-									<tr>
-									<td>
-									</td>
-									</tr>
-									<tr>
-										<td colspan="5"><span style="float: left;"><i
-												class="fa fa-pen"></i>&nbsp;제목 </span><input type="text" name="dtitle"
-											class="form-control" placeholder="제목을입력하세요"></td>
-									</tr>
-									
-									
 								
-									
-										<td colspan="5"><span style="float: left;"><i class="far fa-keyboard"></i>&nbsp;할일</span>
-										 <textarea
-												name="dcontent" id="contentText" cols="30" rows="10"
-												class="form-control"
-												style="width: 100%; height: 200px; overflow: auto; resize: none;">
-										</textarea> 
-										
+<tr>
+<td align="center">${ dopost.dno }</td>
 
-					
-									<tr>
-										<td colspan="5">&nbsp;</td>
-									</tr>
-									<tr>
-										<td colspan="2"></td>
-										<!--  #f8f9fc   -->
-										<td>
-										<select name="dopen" class="form-control">
-											<option value="Y" >전체공개</option>
-											<option value="N" >나만보기</option>
-										</select>
-										</td>
-									<input type="hidden" name="dpnum" value="${sessionScope.dpnum }">
-										
-								<!-- 		
-								 	<td><a class="btn btn-success btn-icon-split"
-											href="javascript:mytodo.submit();" style="width: 90%;">
-												<span class="text">등록</span>
-										</a></td>
-										<td><a href="javascript:mytodo.reset();"
-											class="btn btn-danger btn-icon-split" style="width: 90%;">
-												<span class="text">취소</span>
-										</a></td>  -->
-										<input type="submit" class="btn btn-sm btn-info" value=" 등  록 ">
-										<input type="reset" class="btn btn-sm btn-danger"  value=" 취  소 ">
-									</tr>
+
+<td>
+	${ dopost.dtitle }
+</td>
+<td align="center">${ dopost.ducode }</td>
+<td align="center">${ dopost.dwriter }</td>
+<td align="center">${ dopost.dcontent }</td>
+<td align="center">${ dopost.denrolldate }</td>
+<td align="center">${ dopost.dopen }</td>
+<td align="center">${ dopost.dpnum }</td>
+</tr>
+<td colspan="6" align="center">
+<input type ="button" value="수정 페이지로 이동" onclick="javascript:location.href='dopostUpdateView.do?dno=${dopost.dno}';"> &nbsp;&nbsp;&nbsp;
+<input type ="button" value="삭제하기" onclick="javascript:location.href='dopostDelete.do?dno=${dopost.dno}';">
+</td>
+</tr>								
 								</table>
-							</form>
+						
 							
 						</div>
 					</div>

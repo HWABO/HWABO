@@ -18,41 +18,29 @@ public class DopostServiceImpl implements DopostService {
 	private DopostDao dopostDao;
 
 	@Override
-	public int insertdopost(Dopost dopost) {
-		logger.info("DopostServiceImpl.run ........................");
-		return dopostDao.insertdopost(dopost);
+	public int insertDopost(Dopost dopost) {		
+		return dopostDao.insertDopost(dopost);
 	}
 
 	@Override
-	public int deletedopost(Dopost dopost) {
-		
-		return dopostDao.deletedopost(dopost);
+	public int deleteDopost(String dno) {		
+		return dopostDao.deleteDopost(dno);
 	}
 
 	@Override
-	public int updatedopost(Dopost dopost) {
-		
-		return dopostDao.updateOrigindopost(dopost);
+	public int updateDopost(Dopost dopost) {		
+		return dopostDao.updateDopost(dopost);
 	}
 
 	
 	@Override
 	public ArrayList<Dopost> selectList() {
-		return null;
-		
+		return dopostDao.selectList();
 	}
 
 	@Override
-	public Dopost selectonedopost(String dno) {
-		return dopostDao.selectdopost(dno);
+	public Dopost selectDopost(String dno) {
+		return dopostDao.selectDopost(dno);
 	}
-
-	
-
-	@Override
-	public Member selectMember(String uemail) {
-		return dopostDao.selectMember(uemail);
-	}
-	
 	
 }

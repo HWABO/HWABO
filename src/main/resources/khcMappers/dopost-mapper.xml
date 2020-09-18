@@ -15,25 +15,29 @@
 	<result column="dpnum" property="dpnum"/>
 	</resultMap>
 	
-	<insert id="insertdopost" parameterType="Dopost">
+	<insert id="insertDopost" parameterType="Dopost">
 	insert into dopost 
 	values((select concat('d', (select nvl(max(to_number(substr(dno,2))),0)+1 from dopost))from dual), #{dtitle}, #{ducode}, #{dwriter}, #{dcontent}, SYSDATE, #{dopen}, #{dpnum})
 	
 	</insert>
 	
-	<update id="updateOrigindopost" parameterType="Dopost">
+	<update id="updateDopost" parameterType="Dopost">
 	update dopost
-	set dtitle = #{dtitle}, dtitle = #{dtitle}
-	where dwriter = #{dwriter}
+	set dtitle = #{dtitle}, dcontent = #{dcontent}
+	where dno = #{dno}
 	</update>
 	
-	<delete id="deletedopost" parameterType="Dopost">
+	<delete id="deleteDopost" parameterType="string">
 	delete dopost where dno = #{dno}
 	</delete>
 	
-	<select id="selectone" parameterType="String" resultMap="resultDopost">
+	<select id="selectDopost" parameterType="String" resultMap="resultDopost">
 	select * from dopost
 	where dno = #{dno}
+	</select>
+	
+	<select id="selectList" resultMap ="resultDopost">
+	select * from dopost
 	</select>
 	
 </mapper>
