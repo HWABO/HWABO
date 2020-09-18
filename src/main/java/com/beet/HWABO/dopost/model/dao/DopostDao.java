@@ -24,7 +24,6 @@ public class DopostDao {
 	}
 
 	public int insertDopost(Dopost dopost) {
-		logger.info("dopostDao run.....");
 		return session.insert("dopostMapper.insertDopost", dopost);
 	}
 
@@ -48,6 +47,4 @@ public class DopostDao {
 	}
 
 	
-
-
 }

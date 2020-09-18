@@ -378,6 +378,7 @@ function showWriteForm(){
 <c:if test="${ !empty sessionScope.ucode }">
 	<div style="align:center;text-align:center;">
 		<button onclick="showWriteForm();">글쓰기</button>
+
 	</div>
 </c:if>
 
