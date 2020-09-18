@@ -15,14 +15,36 @@
 
   <title>HWABO</title>
 
-  <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template -->
   <link href="/hwabo/resources/maincss/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="/hwabo/resources/maincss/css/sb-admin-2.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/hwabo/resources/maincss/css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="/hwabo/resources/maincss/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
+
+<!-- 진행률시작 -->
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+
+<!-- 진행률끝 -->
 
 <body id="page-top">
 <!-- 테스트버튼 시작 -->
@@ -138,14 +160,14 @@
       </li>
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="charts.jsp">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tables.jsp">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
@@ -172,9 +194,11 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+          <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+          </form>
 
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -353,64 +377,359 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-          <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme. The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js documentation</a>.</p>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <div class="col-xl-8 col-lg-7">
-
-              <!-- Area Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
-                </div>
-              </div>
-
-              <!-- Bar Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="myBarChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
-                </div>
-              </div>
-
+<!-- 진행률 시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
             </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+                            <h1 class="m-0 text-primary">전체 진행률</h1>
+                            <hr>
 
-            <!-- Donut Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.
-                </div>
-              </div>
+<div id="myProgress">
+  <div id="myBar">0%</div>
+</div>
+<br>
+<table style="text-align:center;width:100%;color:white;"><tr><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;"></td><td style="width:20%;">
+<a class="btn btn-success btn-icon-split" style="width:90%;" onclick="move()">
+<span class="text">진행률바 테스트</span>
+</a>
+</td>
+</tr></table>
+<script>
+var i = 0;
+let c = 5;//목표 갯수 현재 5개
+var devide = 0;
+function move() {
+	devide += 100 / c;
+    if(devide > 100){
+    	devide = 100;
+    }
+  if (i == 0) {
+
+    var elem = document.getElementById("myBar");
+    var width = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= devide) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+        elem.innerHTML = width  + "%";
+      }
+    }
+  }
+}
+</script>
             </div>
           </div>
+<!-- 진행률끝 -->
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800"></h1>
+          <p class="mb-4"></p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+              <form action="blank.do" id="mainInsert">
+              <table style="text-align:center;width:100%;">
+              <tr class="m-0 font-weight-bold text-primary"><td style="width:20%;">
+              <span>글작성</span>
+              </td><td style="width:20%;">
+              <span>업무</span>
+              </td><td style="width:20%;">
+              <span>일정</span>
+              </td><td style="width:20%;">
+              <span>할일</span>
+              </td><td style="width:20%;">
+              <span>투표</span>
+              </td></tr>
+              <tr><td colspan="5">
+              <hr>
+              </td></tr>
+              <tr><td colspan="5">
+              <input type="text" class="form-control" placeholder="일정 제목을 입력하세요">
+              </td></tr>
+              <tr><td colspan="5">&nbsp;</td></tr>
+              <tr><td colspan="2">
+              <input type="date" class="form-control">
+              </td><td>
+              <img src="/hwabo/resources/maincss/img/tilde.png" style="width:100px;height:35px;">
+              </td><td colspan="2">
+              <input type="date" class="form-control">
+              </td></tr>
+              <tr><td colspan="5">&nbsp;</td></tr>
+              <tr><td colspan="5">
+              <input type="text" class="form-control" placeholder="장소를 입력하세요">
+              </td></tr>
+              <tr><td colspan="5">&nbsp;</td></tr>
+              <tr><td colspan="5">
+              <input type="text" class="form-control" placeholder="일정 제목을 입력하세요">
+              </td></tr>
+              <tr><td colspan="5">&nbsp;</td></tr>
+              <tr><td colspan="5">
+              <input type="text" class="form-control" placeholder="메모를 입력하세요">
+              </td></tr>
+              <tr><td colspan="5">&nbsp;</td></tr>
+              <tr><td colspan="3"></td>
+              <td>
+              <a class="btn btn-success btn-icon-split" href="javascript:mainInsert.submit();" style="width:90%;" >
+                    <span class="text">등록</span>
+                  </a>
+              </td><td>
+              <a href="javascript:mainInsert.reset();" class="btn btn-danger btn-icon-split" style="width:90%;">
+                    <span class="text">취소</span>
+              </a>
+              </td></tr>
+              </table>
+              </form>
+            </div>
+          </div>
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+<!-- 게시글시작 -->
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+            </div>
+            <div class="card-body">
+              <!-- 게시글안쪽 -->
+<h1>게시글 제목</h1>
+<hr>
+가<br>
+나다<br>
+라마바<br>
+사아자차<br>
+<br>
+<br>
+<hr>
+<table style="width:100%;">
+<tr><td style="width:20%;">
+<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">좋아요 0</span>
+                  </a>
+</td><td style="width:20%;"></td><td style="width:20%;"></td>
+<td style="width:20%;"></td><td style="width:20%;float:right;">
+</td>
+</tr>
+</table>
+            </div>
+<div class="px-3 py-5 bg-gradient-light text-white" style="height:10px;">
+<input type="text" class="form-control" placeholder="답글을 입력하세요">
+</div>
+          </div>
+<!-- 게시글끝 -->
+
 
         </div>
         <!-- /.container-fluid -->
@@ -469,12 +788,11 @@
   <script src="/hwabo/resources/maincss/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="/hwabo/resources/maincss/vendor/chart.js/Chart.min.js"></script>
+  <script src="/hwabo/resources/maincss/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/hwabo/resources/maincss/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="/hwabo/resources/maincss/js/demo/chart-area-demo.js"></script>
-  <script src="/hwabo/resources/maincss/js/demo/chart-pie-demo.js"></script>
-  <script src="/hwabo/resources/maincss/js/demo/chart-bar-demo.js"></script>
+  <script src="/hwabo/resources/maincss/js/demo/datatables-demo.js"></script>
 
 </body>
 

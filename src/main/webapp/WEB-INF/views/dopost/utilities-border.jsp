@@ -16,11 +16,11 @@
   <title>HWABO</title>
 
   <!-- Custom fonts for this template-->
-  <link href="/hwabo/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/hwabo/resources/maincss/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="/hwabo/resources/maincss/css/sb-admin-2.css" rel="stylesheet">
+  <link href="/hwabo/resources/maincss/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -101,8 +101,8 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item active" href="utilities-color.jsp">Colors</a>
-            <a class="collapse-item" href="utilities-border.jsp">Borders</a>
+            <a class="collapse-item" href="utilities-color.jsp">Colors</a>
+            <a class="collapse-item active" href="utilities-border.jsp">Borders</a>
             <a class="collapse-item" href="utilities-animation.jsp">Animations</a>
             <a class="collapse-item" href="utilities-other.jsp">Other</a>
           </div>
@@ -355,88 +355,104 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-1 text-gray-800">Color Utilities</h1>
+          <h1 class="h3 mb-1 text-gray-800">Border Utilities</h1>
           <p class="mb-4">Bootstrap's default utility classes can be found on the official <a href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities below were created to extend this theme past the default utility classes built into Bootstrap's framework.</p>
 
           <!-- Content Row -->
           <div class="row">
 
-            <!-- First Column -->
-            <div class="col-lg-4">
+            <!-- Border Left Utilities -->
+            <div class="col-lg-6">
 
-              <!-- Custom Text Color Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Text Color Utilities</h6>
-                </div>
+              <div class="card mb-4 py-3 border-left-primary">
                 <div class="card-body">
-                  <p class="text-gray-100 p-3 bg-dark m-0">.text-gray-100</p>
-                  <p class="text-gray-200 p-3 bg-dark m-0">.text-gray-200</p>
-                  <p class="text-gray-300 p-3 bg-dark m-0">.text-gray-300</p>
-                  <p class="text-gray-400 p-3 bg-dark m-0">.text-gray-400</p>
-                  <p class="text-gray-500 p-3 m-0">.text-gray-500</p>
-                  <p class="text-gray-600 p-3 m-0">.text-gray-600</p>
-                  <p class="text-gray-700 p-3 m-0">.text-gray-700</p>
-                  <p class="text-gray-800 p-3 m-0">.text-gray-800</p>
-                  <p class="text-gray-900 p-3 m-0">.text-gray-900</p>
+                  .border-left-primary
                 </div>
               </div>
 
-              <!-- Custom Font Size Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Font Size Utilities</h6>
-                </div>
+              <div class="card mb-4 py-3 border-left-secondary">
                 <div class="card-body">
-                  <p class="text-xs">.text-xs</p>
-                  <p class="text-lg mb-0">.text-lg</p>
+                  .border-left-secondary
                 </div>
               </div>
 
-            </div>
-
-            <!-- Second Column -->
-            <div class="col-lg-4">
-
-              <!-- Background Gradient Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Background Gradient Utilities</h6>
-                </div>
+              <div class="card mb-4 py-3 border-left-success">
                 <div class="card-body">
-                  <div class="px-3 py-5 bg-gradient-primary text-white">.bg-gradient-primary</div>
-                  <div class="px-3 py-5 bg-gradient-secondary text-white">.bg-gradient-secondary</div>
-                  <div class="px-3 py-5 bg-gradient-success text-white">.bg-gradient-success</div>
-                  <div class="px-3 py-5 bg-gradient-info text-white">.bg-gradient-info</div>
-                  <div class="px-3 py-5 bg-gradient-warning text-white">.bg-gradient-warning</div>
-                  <div class="px-3 py-5 bg-gradient-danger text-white">.bg-gradient-danger</div>
-                  <div class="px-3 py-5 bg-gradient-light text-white">.bg-gradient-light</div>
-                  <div class="px-3 py-5 bg-gradient-dark text-white">.bg-gradient-dark</div>
+                  .border-left-success
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-info">
+                <div class="card-body">
+                  .border-left-info
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-warning">
+                <div class="card-body">
+                  .border-left-warning
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-danger">
+                <div class="card-body">
+                  .border-left-danger
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-dark">
+                <div class="card-body">
+                  .border-left-dark
                 </div>
               </div>
 
             </div>
 
-            <!-- Third Column -->
-            <div class="col-lg-4">
+            <!-- Border Bottom Utilities -->
+            <div class="col-lg-6">
 
-              <!-- Grayscale Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Grayscale Background Utilities</h6>
-                </div>
+              <div class="card mb-4 py-3 border-bottom-primary">
                 <div class="card-body">
-                  <div class="p-3 bg-gray-100">.bg-gray-100</div>
-                  <div class="p-3 bg-gray-200">.bg-gray-200</div>
-                  <div class="p-3 bg-gray-300">.bg-gray-300</div>
-                  <div class="p-3 bg-gray-400">.bg-gray-400</div>
-                  <div class="p-3 bg-gray-500 text-white">.bg-gray-500</div>
-                  <div class="p-3 bg-gray-600 text-white">.bg-gray-600</div>
-                  <div class="p-3 bg-gray-700 text-white">.bg-gray-700</div>
-                  <div class="p-3 bg-gray-800 text-white">.bg-gray-800</div>
-                  <div class="p-3 bg-gray-900 text-white">.bg-gray-900</div>
+                  .border-bottom-primary
                 </div>
               </div>
+
+              <div class="card mb-4 py-3 border-bottom-secondary">
+                <div class="card-body">
+                  .border-bottom-secondary
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-success">
+                <div class="card-body">
+                  .border-bottom-success
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-info">
+                <div class="card-body">
+                  .border-bottom-info
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-warning">
+                <div class="card-body">
+                  .border-bottom-warning
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-danger">
+                <div class="card-body">
+                  .border-bottom-danger
+                </div>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-dark">
+                <div class="card-body">
+                  .border-bottom-dark
+                </div>
+              </div>
+
             </div>
 
           </div>

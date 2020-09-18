@@ -1,4 +1,4 @@
-<%@ page session="false"%>
+<%-- <%@ page session="false" %> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -25,7 +25,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/hwabo/resources/maincss/css/sb-admin-2.css"
+<link href="/hwabo/resources/maincss/css/sb-admin-2.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this page -->
@@ -383,12 +383,12 @@
 							});
 						</script>
 
-						<div class="card-body">
+						<div class="card-body"> <!-- 정의 -->
 							<!-- 게시글안쪽 -->
-							<form action="updatemytodo.do" id="dopost"  method="post">
+							<form action="dopostinsert.do" id="dopost"  method="post">
 							
 								<table style="text-align: center; width: 100%;">
-									<tr class="m-0 font-weight-bold text-primary">
+									<tr class="m-0 font-weight-bold text-primary">   <!-- tr:큰속성,  td:각각 속성 -->
 										<td style="width: 20%;"><span>글작성</span></td>
 										<td style="width: 20%;"><span>업무</span></td>
 										<td style="width: 20%;"><span>일정</span></td>
@@ -400,21 +400,31 @@
 											<hr>
 										</td>
 									</tr>
+									<tr>
 									
-									<input type="text" name="dno" value="${sessionScope.dno}"readonly>
+									
+									<td>
+								<!-- 	<input type="hidden" name="ducode" value="h128">
+				
+									<input type="hidden" name="dwriter" value="김서장"> -->
+									<input type="hidden" name="ducode" value="${sessionScope.ucode }">
+								 	<input type="hidden" name="dwriter" value="${sessionScope.uname}">
+									<!-- <input type="text" name="dwriter" value="글쓴이"> -->
+									</td>
+									</tr>
+									
 									<tr>
 									<td>
-								
 									</td>
 									</tr>
 									<tr>
 										<td colspan="5"><span style="float: left;"><i
-												class="fa fa-pen"></i>&nbsp;제목 </span><input type="text" name="dtitle" value="${sessionScope.dtitle}"
+												class="fa fa-pen"></i>&nbsp;제목 </span><input type="text" name="dtitle"
 											class="form-control" placeholder="제목을입력하세요"></td>
 									</tr>
 									
 									
-									<input type="text" name="dwriter" value="${sessionScope.dwriter}" readonly> 
+								
 									
 										<td colspan="5"><span style="float: left;"><i class="far fa-keyboard"></i>&nbsp;할일</span>
 										 <textarea
@@ -432,12 +442,12 @@
 										<td colspan="2"></td>
 										<!--  #f8f9fc   -->
 										<td>
-										<select name="dopen" class="form-control" value="${sessionScope.dopen}">
+										<select name="dopen" class="form-control">
 											<option value="Y" >전체공개</option>
 											<option value="N" >나만보기</option>
 										</select>
 										</td>
-										
+									<input type="hidden" name="dpnum" value="${sessionScope.dpnum }">
 										
 								<!-- 		
 								 	<td><a class="btn btn-success btn-icon-split"
@@ -448,8 +458,7 @@
 											class="btn btn-danger btn-icon-split" style="width: 90%;">
 												<span class="text">취소</span>
 										</a></td>  -->
-										<input type="submit" class="btn btn-sm btn-info" value="수 정">
-								<!-- 		<input type="button" onclick="return " class="btn btn-sm btn-info" value="글삭제"> -->
+										<input type="submit" class="btn btn-sm btn-info" value=" 등  록 ">
 										<input type="reset" class="btn btn-sm btn-danger"  value=" 취  소 ">
 									</tr>
 								</table>
