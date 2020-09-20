@@ -40,7 +40,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='abc.do'">다운다운 페이지</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='cards.do'">red 페이지</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='bpostlist.do'">kyukyu페이지</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='khc.do'">dopost페이지로</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='dopostlist.do'">dopost페이지로</a></li>
                              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='mvlogin.do';">로그인</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='mvsign.do'">회원가입</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:location.href='logout.do'">로그아웃</a></li>
