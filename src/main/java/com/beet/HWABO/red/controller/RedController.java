@@ -852,6 +852,106 @@ public class RedController {
 		}
 		out.close();
 	}
+		@RequestMapping(value = "detailP.do", method = RequestMethod.POST)
+		public ModelAndView ProgressDetailView(Progress pro, ModelAndView mv) {
+			logger.info(""+pro);
+			int chk = 0;
+			int goal = 0;
+			int done = 0;
+			ArrayList<Progress> plist = new ArrayList<Progress>(); 
+			ArrayList<Bpost> blist = redService.selectBpost(pro.getProject_num());
+			for(Bpost b : blist) {
+				Progress p = new Progress();
+				 
+				p.setTitle(b.getBtitle());
+				if(b.getBcontent() != null) {
+					p.setContent(b.getBcontent());
+				}else {
+					p.setContent("");
+				}
+				if(b.getBwriter() != null) {
+					p.setName(b.getBwriter());
+				}else {
+					p.setName("비뜨 애호가");
+				}
+				p.setUcode(b.getBucode());
+				p.setProject_num(pro.getProject_num());
+				p.setGoal(3);
+				goal += 3;
+				if(b.getBkind().equals("완료")) {
+					p.setDone(3);
+					done += 3;
+				}else if(b.getBkind().equals("피드백")) {
+					p.setDone(2);
+					done += 2;
+				}else if(b.getBkind().equals("진행")) {
+					p.setDone(1);
+					done += 1;
+				}else {
+					p.setDone(0);
+				}
+				plist.add(p);
+			}
+			if(redService.selectProgressList(pro.getProject_num()).size() > 0) {
+				if(redService.deleteProgress(pro.getProject_num()) > 0) {
+					logger.info("진행률 초기화완료...");
+				}else {
+					logger.info("진행률 초기화오류...");
+				}
+			}else {
+				logger.info("진행률 초기화완료... : 초기화할 데이터 없음 (정상)");
+			}
+			for(Progress p : plist) {
+				if(redService.insertProgress(p) < 1) {
+					chk++;
+					logger.info("PROGRESS 데이터 유실됨... 유실된 데이터 : " + p);
+				}
+			}
+			
+			Set<String> MemberNames = new HashSet<String>();
+			for(Progress progress : plist) {
+				MemberNames.add(progress.getName());
+				logger.info("들어가는 이름 : " + progress.getName());
+			}
+			
+			for(String names : MemberNames) {
+				logger.info("나온 이름 : " + names);
+				ArrayList<Progress> list = new ArrayList<Progress>();
+				for(Progress progress : plist) {
+					if(progress.getName().equals(names)) {
+						list.add(progress);
+					}
+				}
+				mv.addObject(names, list);
+			}
+			
+		if(chk < 1) {
+			MemberProject mp = new MemberProject();
+			mp.setProject_num(pro.getProject_num());
+			mp.setGoal(goal);
+			mp.setDone(done);
+			if(goal == 0 && done == 0) {
+				mp.setGoal(100000);
+				mp.setDone(1);
+			}
+			logger.info("PROGRESS 데이터 사용가능...");
+			if(redService.updateProjectProgress(mp) > 0) {
+				logger.info("전체 진행률 업데이트 성공...");
+			}else {
+				logger.info("전체 진행률 업데이트 실패...");
+			}
+			mv.addObject("MemberNames",MemberNames);
+			mv.addObject("plist", plist);
+		}else {
+			mv.setViewName("welcome");
+			logger.info("전체 진행률 업데이트 실패... 추측 : DB테이블과 매치 불가");
+		}				
+		mv.addObject("progress",pro);
+			
+		mv.setViewName("red/detailProgress");
+			
+		return mv;
+	}
 ////views start//////////////////////////////
 	@RequestMapping(value = "suugit.do", method = RequestMethod.GET)
 	public String suugitIndex(Model model) {

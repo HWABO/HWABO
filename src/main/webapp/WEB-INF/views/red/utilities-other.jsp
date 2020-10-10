@@ -39,7 +39,10 @@
   color: white;
   border-radius:8px;
 }
-
+#ptitle:hover{
+background-color:#CEF6F5;
+border-radius:5px;
+}
 </style>
 
 <!-- 진행률끝 -->
@@ -121,10 +124,21 @@ for(String pnames : (Set<String>)request.getAttribute("MemberNames")){
                   <div class="progress mb-4">
                     <div class="progress-bar progress-bar1" role="progressbar" style="background-color:#4e73df;width: <%= total %>%;backgound-color:#F8E0E0;" aria-valuenow="<%= total %>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <% //int count = 0; %>
+                  <% int count = 0; %>
                   <c:forEach var="userInfo" items="<%= (ArrayList<Progress>)request.getAttribute(pnames) %>" varStatus="status">
                   <fmt:parseNumber var= "percent" integerOnly= "true" value="${userInfo.done * 100 / userInfo.goal}" />
-                  <div class="mb-1 small">
+                  <!-- 디테일뷰 폼시작 -->
+                  <form action="detailP.do" method="post" id="detailForm<%= ++count %>${ userInfo.ucode }">
+                  <input type="hidden" name="ucode" value="${ userInfo.ucode }">
+                  <input type="hidden" name="project_num" value="${ userInfo.project_num }">
+                  <input type="hidden" name="name" value="${ userInfo.name }">
+                  <input type="hidden" name="goal" value="${ userInfo.goal }">
+                  <input type="hidden" name="done" value="${ userInfo.done }">
+                  <input type="hidden" name="title" value="${ userInfo.title }">
+                  <input type="hidden" name="content" value="${ userInfo.content }">
+                  </form>
+                  <!-- 디테일뷰 폼끝 -->
+                  <div class="mb-1 small" id="ptitle" onclick="javascript:document.getElementById('detailForm<%= count %>${ userInfo.ucode }').submit();">
                   ${ userInfo.title } 
                   </div>
                   <div class="progress progress-sm mb-2">
