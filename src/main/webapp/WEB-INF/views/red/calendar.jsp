@@ -188,6 +188,7 @@ function cssInit(){
 			});
 			$(".fc-timeGridWeek-button").html("크게 보기");
 			$(".fc-timeGridWeek-button").on("click",function(){
+				$(".fc-view-harness").hide();
 				location.href='/hwabo/fborder.do';
 			});
 			//$(".fc-dayGridMonth-button").hide();
