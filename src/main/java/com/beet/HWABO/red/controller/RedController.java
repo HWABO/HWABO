@@ -383,40 +383,7 @@ public class RedController {
 				logger.info("전체 게시물 : " + allListFilter);
 				mv.addObject("list", allListFilter);
 			}
-			
-			////kyu////
-//			ArrayList<Bpost> list = bpostService.selectList();
-//			if (list != null) {
-//				logger.info("bpost list" + list);
-//				mv.addObject("list", list);
-//			}else {
-//				logger.info("bpost list 불러오기 실패? 어째서... ㅠ");
-//			}
-			////kyu end////
 
-			////abc//////////
-			
-//			String startday = spost.getSstartday().toString();
-//			String endday = spost.getSendday().toString();
-//
-//			SimpleDateFormat recvSimpleFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-//
-//			SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-//			SimpleDateFormat format2 = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-//
-//			try {
-//				java.util.Date startdate = recvSimpleFormat.parse(startday);
-//				java.util.Date enddate = recvSimpleFormat.parse(endday);
-//
-//				startday = format1.format(startdate) + "T" + format2.format(startdate);
-//				endday = format1.format(enddate) + "T" + format2.format(enddate);
-//
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-			//mv.addObject("startday", startday);
-			//mv.addObject("endday", endday);
-			////abc end///////
 			if(pj.getPjadmin() != null) {
 				mv.setViewName("redirect:/fborder.do?project_num=" + pj.getPnum());
 			}

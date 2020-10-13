@@ -19,12 +19,33 @@
 <!--  -->
 <table style="width:1300px"><tr><td></td><td>
 <!--  -->
+<script type="text/javascript">
+//검색기능 시작
+function doSearch(){
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', 'contentSearch.do');
+	xhr.setRequestHeader('Content-type', 'application/json');
+	const data = { id: 3, title: 'JavaScript', author: 'Park', price: 5000};
+	xhr.send(JSON.stringify(data));
+	
+	xhr.onreadystatechange = function (e) {
+		if (xhr.readyState !== XMLHttpRequest.DONE) return;
+		if(xhr.status === 200) {
+			document.getElementById('content').innerHTML = xhr.responseText;
+		 } else {
+		    console.log('서버오류에요...');
+		 }
+	}
+	
+}
+//검색기능 끝
+</script>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="contentSearch.do" method="post" id="searchBar">
+            <div class="input-group" onKeyPress="javascript:if(event.keyCode==13){doSearch();event.preventDefault();}">
+              <input type="text" class="form-control bg-light border-0 small" name="contentSearch" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append" onclick="doSearch();">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
