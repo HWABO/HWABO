@@ -190,7 +190,7 @@ if(m < 10){
 var toke =
 	"<div style=\"width:100%;display:flex;justify-content:center;align-item:center;\">" +
 	"<div style=\"position:fixed;font-size:250%;\"><div><center>" +
-	"<div style=\"color:#19BFAF;font-size:150%;\"><br>${sessionScope.pnames}<br></div>" +
+	"<div style=\"color:#19BFAF;font-size:150%;word-break:break-all;max-width:200px;\"><br>${sessionScope.pnames}<br></div>" +
 	h +":"+ m + 
 	"</center></div></div></div>";
 	
