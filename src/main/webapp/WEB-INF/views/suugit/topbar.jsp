@@ -57,7 +57,7 @@ function doSearch(){
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" name="searchBarcontent" id="searchBarcontent" placeholder="${ barContent }" ${ barRead } aria-label="Search" aria-describedby="basic-addon2">
               <input type="hidden" name="pnum" value="${ sessionScope.pnum }">
-              <div class="input-group-append" onclick="doSearch();">
+              <div class="input-group-append" id="scanner" onclick="javascript:if('${project}' == ''){document.getElementById('searchBar').submit();}">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
