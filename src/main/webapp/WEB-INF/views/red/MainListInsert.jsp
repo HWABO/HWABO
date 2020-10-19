@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <body>
-<script type="text/javascript"	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab3b0466fa883da1d7216010325a5bcc&libraries=services"></script>
+<script type="text/javascript"	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b35521234fb992409fdb7287346cc83&libraries=services"></script>
    <script src="resources/js/cpost.js"></script>
 <script type="text/javascript">
 <!--cpost 사진 미리보기작동 안해서 가림 시작  -->

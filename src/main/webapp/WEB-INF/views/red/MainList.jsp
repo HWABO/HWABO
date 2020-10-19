@@ -96,7 +96,7 @@ border: 1px solid #eee;
 
 </style>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab3b0466fa883da1d7216010325a5bcc&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b35521234fb992409fdb7287346cc83&libraries=services"></script>
 	
 <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
