@@ -169,5 +169,10 @@ public class RedDao {
 	public int updateSpost(SpostFixed spost) {
 		return session.update("redMapper.updateSpost",spost);
 	}
+
+	public ArrayList<PostPlus> selectPost(PostPlus pp) {
+		List<PostPlus> list = session.selectList("redMapper.selectPost", pp);
+		return (ArrayList<PostPlus>)list;
+	}
 	
 }

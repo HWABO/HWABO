@@ -9,10 +9,11 @@
 <script type="text/javascript"	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ab3b0466fa883da1d7216010325a5bcc&libraries=services"></script>
    <script src="resources/js/cpost.js"></script>
 <script type="text/javascript">
-
-
-
-
+<!--cpost 사진 미리보기작동 안해서 가림 시작  -->
+$(function(){
+	$('#unknowFixed').hide();
+})
+<!--cpost 사진 미리보기작동 안해서 가림 끝  -->
 
 function addbcharge0(){
      var name = $(event.target).text();
@@ -349,7 +350,7 @@ jQuery('.suugitMain').click(function () {
               			 <input type="file" name="file" id="file" style="display:none" multiple>
               			<i class="fa fa-link ">&nbsp;&nbsp;파일</i>
               		</label>&nbsp;
-              		 <label class="btn btn-light small">
+              		 <label class="btn btn-light small" id="unknowFixed">
               			<input type="file" name="ofile" style="display:none" id="atchm_img" accept=".jpg,.png,.svg" multiple>
               			<i class="fa fa fa-image ">&nbsp;&nbsp;사진</i>
               		</label> 

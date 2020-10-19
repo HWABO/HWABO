@@ -35,7 +35,7 @@
 </div>
  
 <!--                     추가                         -->
-<%@ include file="commentS.jsp" %>
+<%-- <%@include file="commentS.jsp" %> --%>
 
 
 출처: https://private.tistory.com/65 [공부해서 남 주자]

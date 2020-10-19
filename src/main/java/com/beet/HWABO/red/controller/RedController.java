@@ -318,8 +318,7 @@ public class RedController {
 					chk++;
 					logger.info("PROGRESS 데이터 유실됨... 유실된 데이터 : " + p);
 				}
-			}
-			
+			}	
 			if(chk < 1) {
 				MemberProject mp = new MemberProject();
 				mp.setProject_num(pnum);
@@ -341,53 +340,14 @@ public class RedController {
 			session.setAttribute("totalProgress", total);
 			logger.info("세션에 전체진행률 추가완료... progress : " + total + "%");
 			}
-			
-//			int cFilterCount = 0;
-//			ArrayList<Cpost> clistFilter = new ArrayList<Cpost>();
-			ArrayList<Cpost> clist = redService.selectCpost(pnum);
-//			for(Cpost cpost : clist) {
-//				if(!cpost.getCopen().equals("N")) {
-//					clistFilter.add(cpost);
-//				}else {
-//					cFilterCount++;
-//				}
-//			}
-//			if (clist != null) {
-//				logger.info("cpost list 가져오기 성공... 비공개 된 cpost게시물 : " + cFilterCount + "개");
-//				mv.addObject("clist", clist);
-//			}
-			
-			int allListFilterCount = 0;
-			ArrayList<PostPlus> allListFilter = new ArrayList<PostPlus>();
-			ArrayList<PostPlus> allList = redService.selectAllPost(pnum);
-			for(PostPlus post : allList) {
-				if(!((post.getSopen() !=null && post.getSopen().equals("n")) || 
-				(post.getBopen() !=null && post.getBopen().equals("n")) || 
-				(post.getCopen() !=null && post.getCopen().equals("N")))) {
-					if(post.getFirstword().equals("c")) {
-						for(Cpost cpost : clist) {
-							if(post.getNo().equals(cpost.getCno())) {
-								post.setAddonuse(cpost.getAddonuse());
-							}
-						}
-						allListFilter.add(post);
-					}else {
-						allListFilter.add(post);
-					}
-				}else {
-					allListFilterCount++;
-				}
-			}
+			ArrayList<PostPlus> allListFilter = redService.selectAllPost(pnum);
 			if (allListFilter != null) {
-				logger.info("post list 가져오기 성공... 비공개 된 전체 게시물 : " + allListFilterCount + "개");
 				logger.info("전체 게시물 : " + allListFilter);
 				mv.addObject("list", allListFilter);
 			}
-
 			if(pj.getPjadmin() != null) {
 				mv.setViewName("redirect:/fborder.do?project_num=" + pj.getPnum());
-			}
-			
+			}			
 			return mv;
 	}
 	@RequestMapping(value = "fother.do", method = RequestMethod.GET)
@@ -917,6 +877,20 @@ public class RedController {
 			
 		mv.setViewName("red/detailProgress");
 			
+		return mv;
+	}
+	@RequestMapping(value = "contentSearch.do", method = RequestMethod.POST)
+	@ResponseBody 
+	public ModelAndView contentSearchdo(@RequestParam("pnum") String pnum,@RequestParam("searchBarcontent") String content
+			,HttpServletResponse response,ModelAndView mv) throws IOException {
+		
+		content = "%" + content + "%";
+		PostPlus pp = new PostPlus();
+		pp.setPnum(pnum);
+		pp.setBcontent(content);
+		ArrayList<PostPlus> list =  redService.selectPost(pp);
+		mv.setViewName("red/tables");	
+		mv.addObject("list",list);
 		return mv;
 	}
 ////views start//////////////////////////////

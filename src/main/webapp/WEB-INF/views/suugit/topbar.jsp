@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="kr">
-
+<head>
+<link rel="icon" type="image/x-icon" href="/hwabo/resources/assets/img/favicon.png" />
+</head>
 
 
 <body id="page-top">
@@ -22,29 +24,39 @@
 <script type="text/javascript">
 //검색기능 시작
 function doSearch(){
+	var contentV = document.getElementById("searchBarcontent") 
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', 'contentSearch.do');
 	xhr.setRequestHeader('Content-type', 'application/json');
-	const data = { id: 3, title: 'JavaScript', author: 'Park', price: 5000};
+	const data = { pnum:'${sessionScope.pnum}', bcontent:contentV.val()};
 	xhr.send(JSON.stringify(data));
 	
 	xhr.onreadystatechange = function (e) {
 		if (xhr.readyState !== XMLHttpRequest.DONE) return;
 		if(xhr.status === 200) {
-			document.getElementById('content').innerHTML = xhr.responseText;
+			console.log('바닐라 성공');
+			//document.getElementById('barContents').innerHTML = xhr.responseText;
 		 } else {
 		    console.log('서버오류에요...');
 		 }
 	}
-	
 }
 //검색기능 끝
 </script>
-
+<c:if test="${ empty project }">
+<c:set var="barContent" value="Search for..."></c:set>
+<c:set var="barRead" value=""></c:set>
+</c:if>
+<c:if test="${ !empty project }">
+<c:set var="barContent" value="프로젝트 선택 후 검색 가능합니다"></c:set>
+<c:set var="barRead" value="readonly"></c:set>
+</c:if>
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="contentSearch.do" method="post" id="searchBar">
-            <div class="input-group" onKeyPress="javascript:if(event.keyCode==13){doSearch();event.preventDefault();}">
-              <input type="text" class="form-control bg-light border-0 small" name="contentSearch" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <!-- <div class="input-group" onKeyPress="javascript:if(event.keyCode==13){doSearch();event.preventDefault();}"> -->
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" name="searchBarcontent" id="searchBarcontent" placeholder="${ barContent }" ${ barRead } aria-label="Search" aria-describedby="basic-addon2">
+              <input type="hidden" name="pnum" value="${ sessionScope.pnum }">
               <div class="input-group-append" onclick="doSearch();">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>

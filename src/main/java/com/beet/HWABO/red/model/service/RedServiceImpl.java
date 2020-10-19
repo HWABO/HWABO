@@ -191,5 +191,10 @@ public class RedServiceImpl implements RedService {
 	public int updateSpost(SpostFixed spost) {
 		return redDao.updateSpost(spost);
 	}
+
+	@Override
+	public ArrayList<PostPlus> selectPost(PostPlus pp) {
+		return redDao.selectPost(pp);
+	}
 	
 }

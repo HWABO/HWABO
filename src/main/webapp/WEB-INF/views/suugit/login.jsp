@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,7 +6,13 @@
 <html lang="kr">
 
 <head>
-
+  <link rel="icon" type="image/x-icon" href="/hwabo/resources/assets/img/favicon.png" />
+  <script type="text/javascript">
+  if('${sessionScope.ucode}' != ''){
+  	location.href='cards.do';
+  }
+  </script>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,7 +62,7 @@
                       <input type="password"  class="form-control form-control-user" name="upwd" placeholder="비밀번호" required>
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
+                      <div class="custom-control custom-checkbox small" id="checkBoxError">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">이메일 기억하기</label>
                       </div>
@@ -111,7 +116,12 @@
   <script src="js/sb-admin-2.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type = "text/javascript" src = "https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  
+<!-- 이메일 버튼 숨김 시작 -->
+  <script type="text/javascript">
+  $(function(){
+	  $("#checkBoxError").hide();
+  })
+  </script>
 <script>
 
 

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/x-icon" href="/hwabo/resources/assets/img/favicon.png" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

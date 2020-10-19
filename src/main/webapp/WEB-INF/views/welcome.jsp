@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <c:set var="CONTEXT_PATH" value="${pageContext.request.contextPath}"
-	scope="application" />
-<c:set var="RESOURCES_PATH" value="${CONTEXT_PATH}/resources"
-	scope="application" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="CONTEXT_PATH" value="${pageContext.request.contextPath}" scope="application" />
+<c:set var="RESOURCES_PATH" value="${CONTEXT_PATH}/resources" scope="application" />
 <!DOCTYPE html>
 <html lang="kr">
     <head>
+    	<link rel="icon" type="image/x-icon" href="/hwabo/resources/assets/img/favicon.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Creative - Start Bootstrap Theme</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/hwabo/resources/assets/img/favicon.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->

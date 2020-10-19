@@ -52,4 +52,5 @@ public interface RedService {
 	int insertSpost(SpostFixed spost);
 	int deleteSpost(Calendar calendar);
 	int updateSpost(SpostFixed spost);
+	ArrayList<PostPlus> selectPost(PostPlus pp);
 }

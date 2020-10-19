@@ -231,6 +231,18 @@
 		where pnum = #{pnum}
 		order by enrolldate desc
 </select>
+<select id="selectPost" parameterType="com.beet.HWABO.red.model.vo.PostPlus" resultType="com.beet.HWABO.red.model.vo.PostPlus">
+		select FIRSTWORD, NO, ENROLLDATE, PNUM, UCODE, SNO, STITLE, SUCODE, SWRITER, SSTARTDAY, SENDDAY, SPLACE, SCONTENT, SENROLLDATE, SOPEN, SPNUM, CNO, CPNUM, CTITLE, CUCODE, CWRITER, CCONTENT, CENROLLDATE, COPEN, HASHTAGS, MENTIONS, OFILE1, RFILE1, OFILE2, RFILE2, OFILE3, RFILE3, BNO, BTITLE, BUCODE, BWRITER, BSTARTDAY, BENDDAY, BKIND, BCHARGE, BCONTENT, BENROLLDATE, BOPEN, BRENAMEFILE, BORIGINFILE, BPNUM, BCHARGENAME,
+	concat(concat(to_char(sstartday, 'yyyy-mm-dd'), 'T'),to_char(sstartday, 'hh24:mi') )as stringstart, concat(concat(to_char(sendday, 'yyyy-mm-dd'), 'T'),to_char(sendday, 'hh24:mi') )as stringend 
+	 from realpost 
+		where pnum = #{pnum} and
+		(
+		stitle like #{ bcontent } or scontent like #{ bcontent } or
+		ctitle like #{ bcontent } or ccontent like #{ bcontent } or
+		btitle like #{ bcontent } or bcontent like #{ bcontent }
+		)
+		order by enrolldate desc
+</select>
 
 <select id="selectCpost" parameterType="string" resultMap="rsltCpost">
 		select * from cpost
