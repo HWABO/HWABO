@@ -460,7 +460,7 @@ function daycheckUp(id) {
 				<tr>
 					<td colspan="2">
 					${post.splace }
-					<div id="map1_${status.index }"  style="width:400px; height:200px; margin-top:5px;" ></div> <br>
+					<div id="map1_${status.index }"  style="width:100%; height:200px; margin-top:5px;" ></div> <br>
 <script>
 var index = ${status.index}
 var mapContainer1_${ status.index } = document.getElementById('map1_'+'${ status.index }'), // 지도를 표시할 div 
@@ -574,7 +574,7 @@ $(function(){
 		</div>
 		<div class="card-body">
 			<!-- 게시글안쪽 -->
-			<table>
+			<table style="width: 100%;">
 				<tr>
 					<th>제 목</th>
 				</tr>
