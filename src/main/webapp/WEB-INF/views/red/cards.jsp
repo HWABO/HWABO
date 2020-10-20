@@ -216,7 +216,7 @@ if((++w + 5) % 3 == 0){
                   <center>
                   
 					<% if(p.getOpen() == null){ %> 
-						<img src="resources/projectImg/projectsample.jpg" class="boarder rounded " style="min-height:100px;max-width:120px;max-height:100px">
+						<img src="resources/maincss/img/projectChoice/easter_bunny_flatline.svg" class="boarder rounded " style="min-height:100px;max-width:120px;max-height:100px">
 					<% }else{ %>
 					<img src="<%= p.getOpen() %>" class="boarder rounded " style="min-height:100px;max-width:120px;max-height:100px">
 					<% } %>
