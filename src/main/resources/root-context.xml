@@ -13,9 +13,9 @@
 		class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@101.101.209.87:1521:xe"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
 		<property name="username" value="hwabo"/>
-		<property name="password" value="j201016"/>
+		<property name="password" value="1234"/>
 	</bean>
 	<!-- log4jdbc-remix 관련 dataSource처리  -->
 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
